@@ -1,6 +1,7 @@
 package Genericos.Interfaces;
 
-public interface Buscable <B>  {
-    B getId();
+public interface Buscable  {
+
+    Object buscar();
 
 }

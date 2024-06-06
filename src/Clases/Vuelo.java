@@ -1,6 +1,8 @@
 package Clases;
 
-public class Vuelo {
+import Genericos.Interfaces.Buscable;
+
+public class Vuelo implements Buscable{
 
     public enum estado{PROGRAMADO, RETRASADO, CANCELADO, DESPEGADO} //Se crea un enum para que los estados solo puedan ser estos cuatro
     public enum tipoVuelo{INTERNACIONAL, NACIONAL} //Se crea un enum para que los tipos de vuelo solo puedan ser estos dos
@@ -93,5 +95,10 @@ public class Vuelo {
         }
         Vuelo vuelo = (Vuelo) obj;
         return codigoVuelo.equals(vuelo.codigoVuelo);
+    }
+
+    @Override
+    public Object buscar() {
+        return this.destino;
     }
 }

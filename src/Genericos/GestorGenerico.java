@@ -2,33 +2,37 @@ package Genericos;
 import Genericos.Interfaces.Buscable;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class GestorGenerico<T extends Buscable<B>, B>{
+public class GestorGenerico<T extends Buscable>{
 
-    private Set<T> conjunto;
+    private Set<T> items;
 
     public GestorGenerico() {
-        this.conjunto = new HashSet<>();
+        this.items = new HashSet<>();
     }
 
     public void agregar(T elemento) {
-        conjunto.add(elemento);
+        items.add(elemento);
     }
 
-    public void eliminar(B id) {
-        conjunto.removeIf(elemento -> elemento.getId().equals(id));
+    public T buscar(Object elemento){
+        return items.stream().filter(item->item.buscar().equals(elemento)).findFirst().orElse(null);
     }
 
-    public T buscar(B id) {
-        for (T elemento : conjunto) {
-            if (elemento.getId().equals(id)) {
-                return elemento;
-            }
+    public T eliminar (Object elemento){
+        T item = buscar(elemento);
+        if(item != null){
+            items.remove(item);
         }
-        return null;
+        return item;
     }
+
+    public Set<T> listar(){
+        return items;
+    }
+
+
 
 
 }

@@ -1,6 +1,8 @@
 package Clases;
 
-public class Pasajero {
+import Genericos.Interfaces.Buscable;
+
+public class Pasajero implements Buscable {
 
     private String nombreCompleto;
     private String nroPasaporte;
@@ -56,6 +58,10 @@ public class Pasajero {
         }
         Pasajero pasajero = (Pasajero) obj;
         return nroPasaporte.equals(pasajero.nroPasaporte);
+    }
+    @Override
+    public Object buscar() {
+        return this.nroPasaporte;
     }
 
 

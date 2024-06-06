@@ -1,13 +1,15 @@
 package Clases;
+import Genericos.Interfaces.Buscable;
 
-public class Reserva {
+public class Reserva implements Buscable {
+
 
     public enum claseAsiento{ECONOMICA, NEGOCIOS, PRIMERA};
 
-    private static long autoID = 0;
-    private long id;
+    private static int autoID = 0;
+    private Integer id;
     private Pasajero pasajero;
-    private Vuelo Vuelo;
+    private Vuelo vuelo;
     private claseAsiento claseAsiento;
 
     ///--------------------------INICIO CONSTRUCTORES--------------------------///
@@ -21,7 +23,7 @@ public class Reserva {
         this.id = autoID;
         autoID ++;
         this.pasajero = pasajero;
-        this.Vuelo = vuelo;
+        this.vuelo = vuelo;
         this.claseAsiento = claseAsiento;
     }
 
@@ -40,11 +42,11 @@ public class Reserva {
     }
 
     public Vuelo getVuelo() {
-        return Vuelo;
+        return vuelo;
     }
 
     public void setVuelo(Vuelo vuelo) {
-        Vuelo = vuelo;
+        vuelo = vuelo;
     }
 
     public Reserva.claseAsiento getClaseAsiento() {
@@ -63,9 +65,18 @@ public class Reserva {
     public String toString() {
         return "Clases.Reserva{" +
                 "id=" + id +
-                ", Clases.Pasajero='" + pasajero.getNombreCompleto() + '\'' +
-                ", Clases.Vuelo='" + getVuelo().getCodigoVuelo() + '\'' +
+                ", Clases.Pasajero='" + pasajero.toString() + '\'' +
+                ", Clases.Vuelo='" + vuelo.toString() + '\'' +
                 ", claseAsiento=" + claseAsiento +
                 '}';
     }
+
+
+    @Override
+    public Object buscar() {
+    return this.id;
+    }
+
+
+
 }
